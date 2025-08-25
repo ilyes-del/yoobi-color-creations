@@ -4,55 +4,108 @@ import { Badge } from "@/components/ui/badge"
 import { ShoppingBag, Package, Star, ArrowLeft, Menu, Search, Heart } from "lucide-react"
 import { CartDrawer } from "@/components/cart-drawer"
 import { AddToCartButton } from "@/components/add-to-cart-button"
+import SearchBar from "@/components/search-bar"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+  return (
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <aside className="hidden md:flex flex-col w-64 h-screen bg-card border-r p-6 gap-6 sticky top-0">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <span className="font-bold text-xl text-primary">SchoolSpark</span>
+        </div>
+        <nav className="flex flex-col gap-4">
+          <a href="/" className="text-foreground hover:text-primary transition-colors">الرئيسية</a>
+          <a href="/products" className="text-foreground hover:text-primary transition-colors">المنتجات</a>
+          <a href="/categories" className="text-foreground hover:text-primary transition-colors">الفئات</a>
+          <a href="#" className="text-foreground hover:text-primary transition-colors">العروض</a>
+          <a href="#" className="text-foreground hover:text-primary transition-colors">من نحن</a>
+        </nav>
+        <div className="mt-8">
+          {/* SearchBar in sidebar */}
+          <div className="mb-4">
+            <SearchBar />
+          </div>
+          <Button variant="outline" className="w-full" onClick={() => window.location.href = '/login'}>تسجيل الدخول</Button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1">
+        {/* Navigation for mobile */}
+        <nav className="md:hidden sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <span className="font-bold text-xl text-primary">SchoolSpark</span>
               </div>
-              <span className="font-bold text-xl text-primary">SchoolSpark</span>
+            </div>
+            <div className="flex items-center gap-2 w-full">
+              {/* SearchBar for mobile */}
+              <div className="w-full">
+                <SearchBar />
+              </div>
+              <CartDrawer />
+              <Button variant="outline" onClick={() => window.location.href = '/login'}>تسجيل الدخول</Button>
             </div>
           </div>
+        </nav>
 
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              الرئيسية
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              المنتجات
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              الفئات
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              العروض
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
-              من نحن
-            </a>
+        {/* Hero Section */}
+        <section className="py-20 px-4 relative overflow-hidden">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
+            <div className="absolute bottom-20 left-20 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
+            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-accent-blue/20 rounded-full blur-xl"></div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon">
-              <Search className="h-5 w-5" />
-            </Button>
-            <CartDrawer />
-            <Button variant="outline">تسجيل الدخول</Button>
-            <Button>تسوق الآن</Button>
+          <div className="container mx-auto text-center relative">
+            <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-accent/10 text-primary hover:from-primary/20 hover:to-accent/20 border-primary/20">
+              ✨ متجر اللوازم المدرسية الأول
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
+              كل ما تحتاجه للمدرسة
+              <br />
+              في مكان واحد
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              متجر شامل للوازم المدرسية عالية الجودة بأسعار مناسبة. كل عملية شراء تساهم في دعم طالب محتاج بالحصول على
+              لوازمه المدرسية.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="text-lg px-8 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 hover-lift"
+                onClick={() => window.location.href = '/products'}
+              >
+                تسوق الآن
+                <ArrowLeft className="mr-2 h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 bg-transparent border-2 border-primary hover:bg-primary hover:text-primary-foreground hover-lift"
+              >
+                عرض الفئات
+              </Button>
+            </div>
           </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
+        </section>
+        {/* ...existing code... */}
+        {/* The rest of the page remains unchanged */}
+      </div>
+    </div>
       <section className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
