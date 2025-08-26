@@ -46,7 +46,7 @@ export default function HomePage() {
             <div className="hidden md:block w-64">
               <SearchBar />
             </div>
-            <Heart className="h-6 w-6 cursor-pointer" />
+            <CartDrawer />
           </div>
         </div>
 
