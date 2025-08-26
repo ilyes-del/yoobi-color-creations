@@ -42,13 +42,11 @@ export default function HomePage() {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
+            {/* SearchBar replaces login */}
             <div className="hidden md:block w-64">
               <SearchBar />
             </div>
             <Heart className="h-6 w-6 cursor-pointer" />
-            <Button variant="outline" onClick={() => (window.location.href = "/login")}>
-              تسجيل الدخول
-            </Button>
           </div>
         </div>
       </header>
@@ -79,7 +77,12 @@ export default function HomePage() {
             </nav>
             <div className="mt-6">
               <SearchBar />
-              <Button variant="outline" className="w-full mt-4" onClick={() => (window.location.href = "/login")}>
+              {/* Login moved here */}
+              <Button
+                variant="outline"
+                className="w-full mt-4"
+                onClick={() => (window.location.href = "/login")}
+              >
                 تسجيل الدخول
               </Button>
             </div>
