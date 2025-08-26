@@ -53,6 +53,24 @@ export default function HomePage() {
           <a href="#" className="text-foreground hover:text-primary transition-colors">من نحن</a>
         </nav>
         <div className="mt-8">
+  return (
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <aside className="hidden md:flex flex-col w-64 h-screen bg-card border-r p-6 gap-6 sticky top-0">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <span className="font-bold text-xl text-primary">SchoolSpark</span>
+        </div>
+        <nav className="flex flex-col gap-4">
+          <a href="/" className="text-foreground hover:text-primary transition-colors">الرئيسية</a>
+          <a href="/products" className="text-foreground hover:text-primary transition-colors">المنتجات</a>
+          <a href="/categories" className="text-foreground hover:text-primary transition-colors">الفئات</a>
+          <a href="#" className="text-foreground hover:text-primary transition-colors">العروض</a>
+          <a href="#" className="text-foreground hover:text-primary transition-colors">من نحن</a>
+        </nav>
+        <div className="mt-8">
           {/* SearchBar in sidebar */}
           <div className="mb-4">
             <SearchBar />
@@ -102,28 +120,23 @@ export default function HomePage() {
           </div>
         </section>
         {/* Features Grid */}
-        {/* ...existing code... */}
-        {/* The rest of the page remains unchanged */}
+        <section className="py-16 px-4 bg-gradient-to-br from-muted/30 to-accent/5">
+          {/* ...existing code... */}
+        </section>
+        {/* Popular Products */}
+        <section className="py-16 px-4">
+          {/* ...existing code... */}
+        </section>
+        {/* Impact Section */}
+        <section className="py-16 px-4 bg-gradient-to-br from-primary/5 via-accent/5 to-accent-blue/5 relative overflow-hidden">
+          {/* ...existing code... */}
+        </section>
+        {/* Footer */}
+        <footer className="bg-gradient-to-br from-card to-muted/30 py-12 px-4">
+          {/* ...existing code... */}
+        </footer>
       </div>
     </div>
-                image: "/premium-school-backpack.png",
-                badgeColor: "bg-gradient-to-r from-primary to-secondary",
-                badge: "الأكثر مبيعاً",
-              },
-              {
-                id: 2,
-                title: "طقم أدوات هندسية كامل",
-                brand: "ماث تولز",
-                rating: 4.8,
-                reviews: 89,
-                price: "45 ريال",
-                originalPrice: "65 ريال",
-                image: "/geometry-tools-set-compass-ruler.png",
-                badgeColor: "bg-gradient-to-r from-accent to-accent/80",
-                badge: "خصم 30%",
-              },
-              {
-                id: 3,
                 title: "دفاتر ملاحظات مجموعة 5 قطع",
                 brand: "نوت بوك برو",
                 rating: 4.9,
