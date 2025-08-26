@@ -9,7 +9,32 @@ import SearchBar from "@/components/search-bar"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex">
+    </div>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              متجر شامل للوازم المدرسية عالية الجودة بأسعار مناسبة. كل عملية شراء تساهم في دعم طالب محتاج بالحصول على
+              لوازمه المدرسية.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="text-lg px-8 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 hover-lift"
+                onClick={() => window.location.href = '/products'}
+              >
+                تسوق الآن
+                <ArrowLeft className="mr-2 h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 bg-transparent border-2 border-primary hover:bg-primary hover:text-primary-foreground hover-lift"
+              >
+                عرض الفئات
+              </Button>
+            </div>
+          </div>
+        </section>
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
@@ -35,7 +60,8 @@ export default function HomePage() {
           <Button variant="outline" className="w-full" onClick={() => window.location.href = '/login'}>تسجيل الدخول</Button>
         </div>
       </aside>
-
+      <div className="flex-1">
+        {/* Main Content */}
         {/* Hero Section */}
         <section className="py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 -z-10">
@@ -43,7 +69,6 @@ export default function HomePage() {
             <div className="absolute bottom-20 left-20 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
             <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-accent-blue/20 rounded-full blur-xl"></div>
           </div>
-
           <div className="container mx-auto text-center relative">
             <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-accent/10 text-primary hover:from-primary/20 hover:to-accent/20 border-primary/20">
               ✨ متجر اللوازم المدرسية الأول
@@ -76,113 +101,11 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        {/* Features Grid */}
         {/* ...existing code... */}
         {/* The rest of the page remains unchanged */}
       </div>
     </div>
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-20 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
-          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-accent-blue/20 rounded-full blur-xl"></div>
-        </div>
-
-        <div className="container mx-auto text-center relative">
-          <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-accent/10 text-primary hover:from-primary/20 hover:to-accent/20 border-primary/20">
-            ✨ متجر اللوازم المدرسية الأول
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-            كل ما تحتاجه للمدرسة
-            <br />
-            في مكان واحد
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            متجر شامل للوازم المدرسية عالية الجودة بأسعار مناسبة. كل عملية شراء تساهم في دعم طالب محتاج بالحصول على
-            لوازمه المدرسية.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="text-lg px-8 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 hover-lift"
-            >
-              تسوق الآن
-              <ArrowLeft className="mr-2 h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 bg-transparent border-2 border-primary hover:bg-primary hover:text-primary-foreground hover-lift"
-            >
-              عرض الفئات
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-16 px-4 bg-gradient-to-br from-muted/30 to-accent/5">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">لماذا SchoolSpark؟</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              نقدم أفضل اللوازم المدرسية بجودة عالية وأسعار تنافسية مع التأثير الاجتماعي
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="text-center card-hover border-0 bg-gradient-to-br from-primary/5 to-primary/10">
-              <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Package className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>منتجات متنوعة</CardTitle>
-                <CardDescription>مجموعة شاملة من اللوازم المدرسية لجميع المراحل الدراسية</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="text-center card-hover border-0 bg-gradient-to-br from-accent/5 to-accent/10">
-              <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <ShoppingBag className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>جودة عالية</CardTitle>
-                <CardDescription>منتجات مختارة بعناية من أفضل الماركات العالمية والمحلية</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="text-center card-hover border-0 bg-gradient-to-br from-accent-blue/5 to-accent-blue/10">
-              <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-blue/80 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Heart className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>تأثير اجتماعي</CardTitle>
-                <CardDescription>مع كل عملية شراء، ندعم طالباً محتاجاً بتوفير لوازمه المدرسية</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Products */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">المنتجات الأكثر مبيعاً</h2>
-            <Button variant="outline" className="hover-lift bg-transparent">
-              عرض الكل
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                id: 1,
-                title: "حقيبة مدرسية فاخرة",
-                brand: "سكول باك",
-                rating: 4.9,
-                reviews: 125,
-                price: "149 ريال",
-                originalPrice: "199 ريال",
                 image: "/premium-school-backpack.png",
                 badgeColor: "bg-gradient-to-r from-primary to-secondary",
                 badge: "الأكثر مبيعاً",
