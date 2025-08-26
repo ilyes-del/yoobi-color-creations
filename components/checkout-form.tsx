@@ -28,43 +28,20 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
     name: "",
     email: "",
     phone: "",
-    address: {
-      street: "",
-      city: "",
-      district: "",
-      postalCode: "",
-      country: "المملكة العربية السعودية",
-    },
     notes: "",
   })
 
   const handleInputChange = (field: string, value: string) => {
-    if (field.startsWith("address.")) {
-      const addressField = field.split(".")[1]
-      setFormData((prev) => ({
-        ...prev,
-        address: {
-          ...prev.address,
-          [addressField]: value,
-        },
-      }))
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [field]: value,
-      }))
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
   }
 
   const validateForm = () => {
-    const required = ["name", "email", "phone", "address.street", "address.city", "address.district"]
+    const required = ["name", "email", "phone"]
     for (const field of required) {
-      if (field.startsWith("address.")) {
-        const addressField = field.split(".")[1]
-        if (!formData.address[addressField as keyof typeof formData.address]) {
-          return false
-        }
-      } else if (!formData[field as keyof typeof formData]) {
+      if (!formData[field as keyof typeof formData]) {
         return false
       }
     }
@@ -189,106 +166,22 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
-              عنوان التوصيل
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="street">الشارع والحي *</Label>
-              <Input
-                id="street"
-                value={formData.address.street}
-                onChange={(e) => handleInputChange("address.street", e.target.value)}
-                placeholder="اسم الشارع والحي"
-                required
-              />
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="city">المدينة *</Label>
-                <Input
-                  id="city"
-                  value={formData.address.city}
-                  onChange={(e) => handleInputChange("address.city", e.target.value)}
-                  placeholder="الرياض"
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="district">المنطقة *</Label>
-                <Input
-                  id="district"
-                  value={formData.address.district}
-                  onChange={(e) => handleInputChange("address.district", e.target.value)}
-                  placeholder="المنطقة"
-                  required
-                />
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="postalCode">الرمز البريدي</Label>
-                <Input
-                  id="postalCode"
-                  value={formData.address.postalCode}
-                  onChange={(e) => handleInputChange("address.postalCode", e.target.value)}
-                  placeholder="12345"
-                />
-              </div>
-              <div>
-                <Label htmlFor="country">الدولة</Label>
-                <Input
-                  id="country"
-                  value={formData.address.country}
-                  onChange={(e) => handleInputChange("address.country", e.target.value)}
-                  disabled
-                />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
               <CreditCard className="h-5 w-5" />
               طريقة الدفع
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-              <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg">
-                <RadioGroupItem value="cash" id="cash" />
-                <Label htmlFor="cash" className="flex items-center gap-2 cursor-pointer flex-1">
-                  <Banknote className="h-4 w-4" />
-                  الدفع عند الاستلام
-                  <Badge variant="secondary" className="mr-auto">
-                    الأكثر شيوعاً
-                  </Badge>
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg opacity-50">
-                <RadioGroupItem value="card" id="card" disabled />
-                <Label htmlFor="card" className="flex items-center gap-2 cursor-pointer flex-1">
-                  <CreditCard className="h-4 w-4" />
-                  بطاقة ائتمان
-                  <Badge variant="outline" className="mr-auto">
-                    قريباً
-                  </Badge>
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg opacity-50">
-                <RadioGroupItem value="bank_transfer" id="bank_transfer" disabled />
-                <Label htmlFor="bank_transfer" className="flex items-center gap-2 cursor-pointer flex-1">
-                  <Building2 className="h-4 w-4" />
-                  تحويل بنكي
-                  <Badge variant="outline" className="mr-auto">
-                    قريباً
-                  </Badge>
-                </Label>
-              </div>
-            </RadioGroup>
+            {/* Only cash payment method */}
+            <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg">
+              <RadioGroupItem value="cash" id="cash" checked readOnly />
+              <Label htmlFor="cash" className="flex items-center gap-2 cursor-pointer flex-1">
+                <Banknote className="h-4 w-4" />
+                الدفع نقداً عند الاستلام
+                <Badge variant="secondary" className="mr-auto">
+                  الطريقة الوحيدة
+                </Badge>
+              </Label>
+            </div>
           </CardContent>
         </Card>
 
@@ -326,7 +219,7 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
                   <p className="text-xs text-muted-foreground">من {item.brand}</p>
                   <div className="flex items-center justify-between mt-1">
                     <span className="text-sm">الكمية: {item.quantity}</span>
-                    <span className="font-medium">{(item.price * item.quantity).toFixed(0)} ريال</span>
+                    <span className="font-medium">{(item.price * item.quantity).toFixed(0)} دج</span>
                   </div>
                 </div>
               </div>
@@ -337,29 +230,22 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span>المجموع الفرعي:</span>
-                <span>{summary.totalPrice.toFixed(0)} ريال</span>
+                <span>{summary.totalPrice.toFixed(0)} دج</span>
               </div>
               {summary.savings > 0 && (
                 <div className="flex justify-between text-sm text-green-600">
                   <span>التوفير:</span>
-                  <span>-{summary.savings.toFixed(0)} ريال</span>
+                  <span>-{summary.savings.toFixed(0)} دج</span>
                 </div>
               )}
               <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-1">
-                  <Truck className="h-4 w-4" />
-                  الشحن:
-                </span>
-                <span>{summary.shippingCost === 0 ? "مجاني" : `${summary.shippingCost} ريال`}</span>
-              </div>
-              <div className="flex justify-between text-sm">
                 <span>الضريبة (15%):</span>
-                <span>{(summary.totalPrice * 0.15).toFixed(0)} ريال</span>
+                <span>{(summary.totalPrice * 0.15).toFixed(0)} دج</span>
               </div>
               <Separator />
               <div className="flex justify-between font-semibold text-lg">
                 <span>المجموع النهائي:</span>
-                <span className="text-primary">{(summary.finalTotal + summary.totalPrice * 0.15).toFixed(0)} ريال</span>
+                <span className="text-primary">{(summary.finalTotal + summary.totalPrice * 0.15).toFixed(0)} دج</span>
               </div>
             </div>
 
