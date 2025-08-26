@@ -8,10 +8,12 @@ import { Separator } from "@/components/ui/separator"
 import { ShoppingCart, Plus, Minus, Trash2, Package } from "lucide-react"
 import { useCart } from "./cart-provider"
 import { useState } from "react"
+import { CheckoutForm } from "./checkout-form"
 
 export function CartDrawer() {
   const { items, summary, isLoading, updateQuantity, removeFromCart, clearCart } = useCart()
   const [isOpen, setIsOpen] = useState(false)
+  const [isCheckout, setIsCheckout] = useState(false)
 
   const handleQuantityChange = async (cartItemId: string, newQuantity: number) => {
     try {
@@ -38,7 +40,7 @@ export function CartDrawer() {
   }
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={(open) => { setIsOpen(open); if (!open) setIsCheckout(false); }}>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
           <ShoppingCart className="h-5 w-5" />
@@ -56,8 +58,11 @@ export function CartDrawer() {
             سلة التسوق ({summary.totalItems} منتج)
           </SheetTitle>
         </SheetHeader>
-
-        {items.length === 0 ? (
+        {isCheckout ? (
+          <div className="py-4">
+            <CheckoutForm onOrderComplete={() => { setIsCheckout(false); setIsOpen(false); }} />
+          </div>
+        ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
             <Package className="h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">سلة التسوق فارغة</h3>
@@ -162,7 +167,7 @@ export function CartDrawer() {
 
             {/* Action Buttons */}
             <div className="space-y-2 mt-4">
-              <Button className="w-full" size="lg" disabled={isLoading}>
+              <Button className="w-full" size="lg" disabled={isLoading} onClick={() => setIsCheckout(true)}>
                 إتمام الطلب
               </Button>
               <div className="flex gap-2">
