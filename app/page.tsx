@@ -36,33 +36,6 @@ export default function HomePage() {
         </div>
       </aside>
 
-      {/* Main Content */}
-      <div className="flex-1">
-        {/* Navigation for mobile */}
-        <nav className="md:hidden sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <ShoppingBag className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <span className="font-bold text-xl text-primary">SchoolSpark</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 w-full">
-              {/* SearchBar for mobile */}
-              <div className="w-full">
-                <SearchBar />
-              </div>
-              <CartDrawer />
-              <Button variant="outline" onClick={() => window.location.href = '/login'}>تسجيل الدخول</Button>
-            </div>
-          </div>
-        </nav>
-
         {/* Hero Section */}
         <section className="py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 -z-10">
