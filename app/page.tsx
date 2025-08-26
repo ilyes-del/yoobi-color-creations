@@ -1,40 +1,91 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ShoppingBag, Package, Star, ArrowLeft, Menu, Search, Heart } from "lucide-react"
-import { CartDrawer } from "@/components/cart-drawer"
-import { AddToCartButton } from "@/components/add-to-cart-button"
+import { ShoppingBag, ArrowLeft, Menu, Heart, X } from "lucide-react"
 import SearchBar from "@/components/search-bar"
+import Link from "next/link"
 
 export default function HomePage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   return (
-    <div className="min-h-screen bg-background flex">
-      {/* Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 h-screen bg-card border-r p-6 gap-6 sticky top-0">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Header */}
+      <header className="w-full sticky top-0 z-50 bg-card border-b">
+        <div className="container mx-auto flex items-center justify-between py-4 px-4">
+          {/* Logo + Mobile Menu */}
+          <div className="flex items-center gap-3">
+            <button
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <ShoppingBag className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <span className="font-bold text-xl text-primary">SchoolSpark</span>
+            </div>
           </div>
-          <span className="font-bold text-xl text-primary">SchoolSpark</span>
-        </div>
-        <nav className="flex flex-col gap-4">
-          <a href="/" className="text-foreground hover:text-primary transition-colors">الرئيسية</a>
-          <a href="/products" className="text-foreground hover:text-primary transition-colors">المنتجات</a>
-          <a href="/categories" className="text-foreground hover:text-primary transition-colors">الفئات</a>
-          <a href="#" className="text-foreground hover:text-primary transition-colors">العروض</a>
-          <a href="#" className="text-foreground hover:text-primary transition-colors">من نحن</a>
-        </nav>
-        <div className="mt-8">
-          <div className="mb-4">
-            <SearchBar />
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="/" className="hover:text-primary">الرئيسية</Link>
+            <Link href="/products" className="hover:text-primary">المنتجات</Link>
+            <Link href="/categories" className="hover:text-primary">الفئات</Link>
+            <Link href="#" className="hover:text-primary">العروض</Link>
+            <Link href="#" className="hover:text-primary">من نحن</Link>
+          </nav>
+
+          {/* Right side */}
+          <div className="flex items-center gap-4">
+            <div className="hidden md:block w-64">
+              <SearchBar />
+            </div>
+            <Heart className="h-6 w-6 cursor-pointer" />
+            <Button variant="outline" onClick={() => (window.location.href = "/login")}>
+              تسجيل الدخول
+            </Button>
           </div>
-          <Button variant="outline" className="w-full" onClick={() => window.location.href = '/login'}>
-            تسجيل الدخول
-          </Button>
         </div>
-      </aside>
+      </header>
+
+      {/* Mobile Sidebar Drawer */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+
+          {/* Sidebar */}
+          <div className="relative w-64 bg-card h-full shadow-xl z-50 p-6 flex flex-col">
+            <button
+              className="absolute top-4 right-4"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <nav className="mt-12 flex flex-col gap-4">
+              <Link href="/" className="hover:text-primary">الرئيسية</Link>
+              <Link href="/products" className="hover:text-primary">المنتجات</Link>
+              <Link href="/categories" className="hover:text-primary">الفئات</Link>
+              <Link href="#" className="hover:text-primary">العروض</Link>
+              <Link href="#" className="hover:text-primary">من نحن</Link>
+            </nav>
+            <div className="mt-6">
+              <SearchBar />
+              <Button variant="outline" className="w-full mt-4" onClick={() => (window.location.href = "/login")}>
+                تسجيل الدخول
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="flex-1">
@@ -62,7 +113,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="text-lg px-8 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
-                onClick={() => window.location.href = '/products'}
+                onClick={() => (window.location.href = "/products")}
               >
                 تسوق الآن
                 <ArrowLeft className="mr-2 h-5 w-5" />
