@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingBag, ArrowLeft, Menu, Heart, X } from "lucide-react"
+import { CartDrawer } from "@/components/cart-drawer"
 import SearchBar from "@/components/search-bar"
 import Link from "next/link"
 
