@@ -18,33 +18,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                size="lg"
-                className="text-lg px-8 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 hover-lift"
-                onClick={() => window.location.href = '/products'}
-              >
-                تسوق الآن
-                <ArrowLeft className="mr-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-lg px-8 bg-transparent border-2 border-primary hover:bg-primary hover:text-primary-foreground hover-lift"
-              >
-                عرض الفئات
-              </Button>
-            </div>
-          </div >
-        </section >
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 h-screen bg-card border-r p-6 gap-6 sticky top-0">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <ShoppingBag className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-xl text-primary">SchoolSpark</span>
-        </div>
+      {/* ...existing code... */}
+    </div>
         <nav className="flex flex-col gap-4">
           <a href="/" className="text-foreground hover:text-primary transition-colors">الرئيسية</a>
           <a href="/products" className="text-foreground hover:text-primary transition-colors">المنتجات</a>
