@@ -172,16 +172,18 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
           </CardHeader>
           <CardContent>
             {/* Only cash payment method */}
-            <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg">
-              <RadioGroupItem value="cash" id="cash" checked readOnly />
-              <Label htmlFor="cash" className="flex items-center gap-2 cursor-pointer flex-1">
-                <Banknote className="h-4 w-4" />
-                الدفع نقداً عند الاستلام
-                <Badge variant="secondary" className="mr-auto">
-                  الطريقة الوحيدة
-                </Badge>
-              </Label>
-            </div>
+            <RadioGroup value="cash">
+              <div className="flex items-center space-x-2 space-x-reverse p-3 border rounded-lg">
+                <RadioGroupItem value="cash" id="cash" checked readOnly />
+                <Label htmlFor="cash" className="flex items-center gap-2 cursor-pointer flex-1">
+                  <Banknote className="h-4 w-4" />
+                  الدفع نقداً عند الاستلام
+                  <Badge variant="secondary" className="mr-auto">
+                    الطريقة الوحيدة
+                  </Badge>
+                </Label>
+              </div>
+            </RadioGroup>
           </CardContent>
         </Card>
 
