@@ -99,7 +99,7 @@ export default function AnalyticsPage() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{totalRevenue.toLocaleString()} ريال</div>
+            <div className="text-2xl font-bold">{totalRevenue.toLocaleString()} دج</div>
             <div className="flex items-center gap-1 text-xs">
               <TrendingUp className="h-3 w-3 text-green-600" />
               <span className="text-green-600">+{revenueGrowth.toFixed(1)}%</span>
@@ -144,7 +144,7 @@ export default function AnalyticsPage() {
             <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{avgOrderValue.toFixed(0)} ريال</div>
+            <div className="text-2xl font-bold">{avgOrderValue.toFixed(0)} دج</div>
             <div className="flex items-center gap-1 text-xs">
               <TrendingDown className="h-3 w-3 text-red-600" />
               <span className="text-red-600">-2.4%</span>
@@ -177,7 +177,7 @@ export default function AnalyticsPage() {
                     <XAxis dataKey="month" />
                     <YAxis />
                     <Tooltip
-                      formatter={(value: any) => [`${value.toLocaleString()} ريال`, "المبيعات"]}
+                      formatter={(value: any) => [`${value.toLocaleString()} دج`, "المبيعات"]}
                       labelStyle={{ color: "#000" }}
                     />
                     <Area type="monotone" dataKey="sales" stroke="#FF6B35" fill="#FF6B35" fillOpacity={0.3} />
@@ -253,7 +253,7 @@ export default function AnalyticsPage() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-primary">{category.sales.toLocaleString()} ريال</p>
+                        <p className="font-bold text-primary">{category.sales.toLocaleString()} دج</p>
                       </div>
                     </div>
                   ))}
@@ -284,7 +284,7 @@ export default function AnalyticsPage() {
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right">
-                        <p className="font-bold text-primary">{product.revenue.toLocaleString()} ريال</p>
+                        <p className="font-bold text-primary">{product.revenue.toLocaleString()} دج</p>
                         <div className="flex items-center gap-1">
                           {product.growth > 0 ? (
                             <TrendingUp className="h-3 w-3 text-green-600" />

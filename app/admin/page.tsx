@@ -13,7 +13,7 @@ export default function AdminDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">45,231 ريال</div>
+            <div className="text-2xl font-bold">45,231 دج</div>
             <p className="text-xs text-muted-foreground">+20.1% من الشهر الماضي</p>
           </CardContent>
         </Card>
@@ -65,28 +65,28 @@ export default function AdminDashboard() {
                 {
                   id: "#12345",
                   customer: "أحمد محمد",
-                  amount: "150 ريال",
+                  amount: "150 دج",
                   status: "pending",
                   time: "منذ 5 دقائق",
                 },
                 {
                   id: "#12344",
                   customer: "فاطمة علي",
-                  amount: "89 ريال",
+                  amount: "89 دج",
                   status: "completed",
                   time: "منذ 15 دقيقة",
                 },
                 {
                   id: "#12343",
                   customer: "محمد سالم",
-                  amount: "245 ريال",
+                  amount: "245 دج",
                   status: "processing",
                   time: "منذ 30 دقيقة",
                 },
                 {
                   id: "#12342",
                   customer: "نورا أحمد",
-                  amount: "67 ريال",
+                  amount: "67 دج",
                   status: "completed",
                   time: "منذ ساعة",
                 },

@@ -176,8 +176,8 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
                       <div className="flex items-center justify-between mt-2">
                         <span className="text-sm">الكمية: {item.quantity}</span>
                         <div className="text-right">
-                          <div className="font-medium">{item.total} ريال</div>
-                          <div className="text-sm text-muted-foreground">{item.price} ريال للقطعة</div>
+                          <div className="font-medium">{item.total} دج</div>
+                          <div className="text-sm text-muted-foreground">{item.price} دج للقطعة</div>
                         </div>
                       </div>
                     </div>
@@ -238,26 +238,26 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
               <CardContent className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span>المجموع الفرعي:</span>
-                  <span>{order.summary.subtotal} ريال</span>
+                  <span>{order.summary.subtotal} دج</span>
                 </div>
                 {order.summary.discount > 0 && (
                   <div className="flex justify-between text-sm text-green-600">
                     <span>الخصم:</span>
-                    <span>-{order.summary.discount} ريال</span>
+                    <span>-{order.summary.discount} دج</span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm">
                   <span>الشحن:</span>
-                  <span>{order.summary.shippingCost === 0 ? "مجاني" : `${order.summary.shippingCost} ريال`}</span>
+                  <span>{order.summary.shippingCost === 0 ? "مجاني" : `${order.summary.shippingCost} دج`}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span>الضريبة:</span>
-                  <span>{order.summary.tax} ريال</span>
+                  <span>{order.summary.tax} دج</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between font-semibold text-lg">
                   <span>المجموع النهائي:</span>
-                  <span className="text-primary">{order.summary.total} ريال</span>
+                  <span className="text-primary">{order.summary.total} دج</span>
                 </div>
               </CardContent>
             </Card>

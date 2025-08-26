@@ -198,7 +198,7 @@ export default function OrdersPage() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{totalRevenue.toLocaleString()} ريال</div>
+            <div className="text-2xl font-bold">{totalRevenue.toLocaleString()} دج</div>
             <p className="text-xs text-muted-foreground">من الطلبات المدفوعة</p>
           </CardContent>
         </Card>
@@ -281,7 +281,7 @@ export default function OrdersPage() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <span className="font-bold text-primary">{order.totalAmount} ريال</span>
+                    <span className="font-bold text-primary">{order.totalAmount} دج</span>
                   </TableCell>
                   <TableCell>{getStatusBadge(order.status)}</TableCell>
                   <TableCell>{getPaymentStatusBadge(order.paymentStatus)}</TableCell>
@@ -422,15 +422,15 @@ export default function OrdersPage() {
                           <p className="text-sm text-muted-foreground">الكمية: {item.quantity}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-primary">{item.price * item.quantity} ريال</p>
-                          <p className="text-sm text-muted-foreground">{item.price} ريال للقطعة</p>
+                          <p className="font-bold text-primary">{item.price * item.quantity} دج</p>
+                          <p className="text-sm text-muted-foreground">{item.price} دج للقطعة</p>
                         </div>
                       </div>
                     ))}
                     <div className="border-t pt-3 mt-3">
                       <div className="flex items-center justify-between">
                         <p className="font-bold">المجموع الكلي</p>
-                        <p className="font-bold text-lg text-primary">{selectedOrder.totalAmount} ريال</p>
+                        <p className="font-bold text-lg text-primary">{selectedOrder.totalAmount} دج</p>
                       </div>
                     </div>
                   </div>

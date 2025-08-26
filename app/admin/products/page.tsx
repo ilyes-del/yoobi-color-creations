@@ -500,9 +500,9 @@ export default function ProductsPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-primary">{product.price} ريال</span>
+                      <span className="font-bold text-primary">{product.price} دج</span>
                       {product.originalPrice > product.price && (
-                        <span className="text-sm text-muted-foreground line-through">{product.originalPrice} ريال</span>
+                        <span className="text-sm text-muted-foreground line-through">{product.originalPrice} دج</span>
                       )}
                     </div>
                   </TableCell>

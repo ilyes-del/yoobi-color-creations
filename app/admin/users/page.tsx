@@ -358,7 +358,7 @@ export default function UsersPage() {
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{userStats.totalSpent.toLocaleString()} ريال</div>
+            <div className="text-2xl font-bold">{userStats.totalSpent.toLocaleString()} دج</div>
             <p className="text-xs text-muted-foreground">من جميع العملاء</p>
           </CardContent>
         </Card>
@@ -450,7 +450,7 @@ export default function UsersPage() {
                     <span className="font-medium">{user.totalOrders}</span>
                   </TableCell>
                   <TableCell>
-                    <span className="font-bold text-primary">{user.totalSpent.toLocaleString()} ريال</span>
+                    <span className="font-bold text-primary">{user.totalSpent.toLocaleString()} دج</span>
                   </TableCell>
                   <TableCell>
                     <span className="text-sm">{formatLastLogin(user.lastLogin)}</span>
