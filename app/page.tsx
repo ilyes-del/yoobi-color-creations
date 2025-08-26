@@ -40,14 +40,19 @@ export default function HomePage() {
             <Link href="#" className="hover:text-primary">من نحن</Link>
           </nav>
 
-          {/* Right side */}
+          {/* Right side (Search + Wishlist) */}
           <div className="flex items-center gap-4">
-            {/* SearchBar replaces login */}
+            {/* SearchBar always in header */}
             <div className="hidden md:block w-64">
               <SearchBar />
             </div>
             <Heart className="h-6 w-6 cursor-pointer" />
           </div>
+        </div>
+
+        {/* Mobile Search below nav */}
+        <div className="md:hidden px-4 pb-3">
+          <SearchBar />
         </div>
       </header>
 
@@ -76,8 +81,7 @@ export default function HomePage() {
               <Link href="#" className="hover:text-primary">من نحن</Link>
             </nav>
             <div className="mt-6">
-              <SearchBar />
-              {/* Login moved here */}
+              {/* Login only here */}
               <Button
                 variant="outline"
                 className="w-full mt-4"
